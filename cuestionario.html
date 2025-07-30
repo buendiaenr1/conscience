@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>MAAS - Mindfulness (Móvil)</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f9;
+      color: #2c3e50;
+      line-height: 1.6;
+      -webkit-text-size-adjust: none;
+    }
+
+    .container {
+      max-width: 100%;
+      padding: 15px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 1.4em;
+      text-align: center;
+      margin: 15px 0;
+      color: #2980b9;
+    }
+
+    .subtitle {
+      font-size: 0.9em;
+      text-align: center;
+      color: #7f8c8d;
+      margin-bottom: 15px;
+    }
+
+    .instructions {
+      background-color: #eef2f7;
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 0.95em;
+      margin-bottom: 15px;
+    }
+
+    .scale {
+      font-size: 0.9em;
+      background-color: #dfe6e9;
+      padding: 10px;
+      border-radius: 8px;
+      text-align: center;
+      margin: 10px 0;
+      color: #34495e;
+    }
+
+    .item {
+      background: white;
+      padding: 14px;
+      margin-bottom: 12px;
+      border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    }
+
+    .item label {
+      font-weight: 600;
+      font-size: 0.95em;
+      margin-bottom: 8px;
+      display: block;
+      color: #2c3e50;
+    }
+
+    .item select {
+      width: 100%;
+      padding: 12px;
+      font-size: 1em;
+      border: 1px solid #bdc3c7;
+      border-radius: 8px;
+      background-color: #fdfdfd;
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23131313%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.4-12.8z%22%2F%3E%3C%2Fsvg%3E");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      background-size: 12px;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 16px;
+      margin: 20px 0;
+      background-color: #2980b9;
+      color: white;
+      font-size: 1.1em;
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .btn:active {
+      background-color: #2471a3;
+      transform: translateY(1px);
+    }
+
+    #result {
+      margin-top: 20px;
+      padding: 18px;
+      background-color: #d6eaf8;
+      border-radius: 10px;
+      font-size: 1em;
+      text-align: center;
+      display: none;
+      color: #2c3e50;
+    }
+
+    #result h3 {
+      margin-bottom: 8px;
+      color: #2980b9;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.8em;
+      color: #95a5a6;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Escala MAAS</h1>
+    <p class="subtitle">Mindful Attention Awareness Scale</p>
+
+    <div class="instructions">
+      Responde con sinceridad: ¿con qué frecuencia te ocurre esto?
+    </div>
+
+    <div class="scale">
+      <strong>1</strong> Casi siempre<br>
+      <strong>2</strong> Muy frecuentemente<br>
+      <strong>3</strong> Algo frecuentemente<br>
+      <strong>4</strong> Algo infrecuentemente<br>
+      <strong>5</strong> Muy infrecuentemente<br>
+      <strong>6</strong> Casi nunca
+    </div>
+
+    <form id="maasForm">
+      <!-- Preguntas (15 ítems) -->
+      <div class="item">
+        <label>1. No noto emociones hasta mucho después. <em>(R)</em></label>
+        <select id="q1" required><option value="">Selecciona...</option>
+          <option value="1">1</option><option value="2">2</option>
+          <option value="3">3</option><option value="4">4</option>
+          <option value="5">5</option><option value="6">6</option>
+        </select>
+      </div>
+
+      <div class="item">
+        <label>2. Rompo o derramo cosas por distracción. <em>(R)</em></label>
+        <select id="q2" required><option value="">Selecciona...</option>
+          <option value="1">1</option><option value="2">2</option>
+          <option value="3">3</option><option value="4">4</option>
+          <option value="5">5</option><option value="6">6</option>
+        </select>
+      </div>
+
+      <div class="item">
+        <label>3. Me cuesta concentrarme en el presente. <em>(R)</em></label>
+        <select id="q3" required><option value="">Selecciona...</option>
+          <option value="1">1</option><option value="2">2</option>
+          <option value="3">3</option><option value="4">4</option>
+          <option value="5">5</option><option value="6">6</option>
+        </select>
+      </div>
+
+      <div class="item">
+        <label>4. Camino rápido sin prestar atención. <em>(R)</em></label>
+        <select id="q4" required><option value="">Selecciona...</option>
+          <option value="1">1</option><option value="2">2</option>
+          <option value="3">3</option><option value="4">4</option>
+          <option value="5">5</option><option value="6">6</option>
+        </select>
+      </div>
+
+      <div class="item">
+        <label>5. No noto tensión física hasta que es fuerte. <em>(R)</em></label>
+        <select id="q5" required><option value="">Selecciona...</option>
+          <option value="1">1</option><option value="2">2</option>
+          <option value="3">3</option><option value="4">4</option>
+          <option value="5">5</option><option value="6">6</option>
+        </select>
+      </div>
+
+      <div class="item">
+        <label>6. Olvido nombres de personas recién conocidas. <em>(R)</em></label>
+        <select id="q6" required><option value="">Selecciona...</option>
+          <option value="1">1</option><option value="2">2</option>
+          <option value="3">3</option><option value="4">4</option>
+          <option value="5">5</option><option value="6">6</option>
+        </select>
+      </div>
+
+      <div class="item">
+        <label>7. Actúo automáticamente sin darme cuenta. <em>(R)</em></label>
+        <select id="q7" required><option value="">Selecciona...</option>
+          <option value="1">1</option><option value="2">2</option>
+          <option value="3">3</option><option value="4">4</option>
+          <option value="5">5</option><option value="6">6</option>
+        </select>
+      </div>
+
+      <div class="item">
+        <label>8. Me enfoco en metas futuras y pierdo el presente. <em>(R)</em></label>
+        <select id="q8" required><option value="">Selecciona...</option>
+          <option value="1">1</option><option value="2">2</option>
+          <option value="3">3</option><option value="4">4</option>
+          <option value="5">5</option><option value="6">6</option>
+        </select>
+      </div>
+
+      <div class="item">
+        <label>9. Hago tareas de forma mecánica. <em>(R)</em></label>
+        <select id="q9" required><option value="">Selecciona...</option>
+          <option value="1">1</option><option value="2">2</option>
+          <option value="3">3</option><option value="4">4</option>
+          <option value="5">5</option><option value="6">6</option>
+        </select>
+      </div>
+
+      <div class="item">
+        <label>10. Escucho a medias cuando hablan. <em>(R)</em></label>
+        <select id="q10" required><option value="">Selecciona...</option>
+          <option value="1">1</option><option value="2">2</option>
+          <option value="3">3</option><option value="4">4</option>
+          <option value="5">5</option><option value="6">6</option>
+        </select>
+      </div>
+
+      <div class="item">
+        <label>11. Como sin notar sabor ni textura. <em>(R)</em></label>
+        <select id="q11" required><option value="">Selecciona...</option>
+          <option value="1">1</option><option value="2">2</option>
+          <option value="3">3</option><option value="4">4</option>
+          <option value="5">5</option><option value="6">6</option>
+        </select>
+      </div>
+
+      <div class="item">
+        <label>12. Apresuro actividades sin estar presente. <em>(R)</em></label>
+        <select id="q12" required><option value="">Selecciona...</option>
+          <option value="1">1</option><option value="2">2</option>
+          <option value="3">3</option><option value="4">4</option>
+          <option value="5">5</option><option value="6">6</option>
+        </select>
+      </div>
+
+      <div class="item">
+        <label>13. Me enfado sin darme cuenta hasta después. <em>(R)</em></label>
+        <select id="q13" required><option value="">Selecciona...</option>
+          <option value="1">1</option><option value="2">2</option>
+          <option value="3">3</option><option value="4">4</option>
+          <option value="5">5</option><option value="6">6</option>
+        </select>
+      </div>
+
+      <div class="item">
+        <label>14. Me doy cuenta de cómo mis emociones afectan mis acciones.</label>
+        <select id="q14" required><option value="">Selecciona...</option>
+          <option value="1">1</option><option value="2">2</option>
+          <option value="3">3</option><option value="4">4</option>
+          <option value="5">5</option><option value="6">6</option>
+        </select>
+      </div>
+
+      <div class="item">
+        <label>15. Presto atención plena a experiencias cotidianas.</label>
+        <select id="q15" required><option value="">Selecciona...</option>
+          <option value="1">1</option><option value="2">2</option>
+          <option value="3">3</option><option value="4">4</option>
+          <option value="5">5</option><option value="6">6</option>
+        </select>
+      </div>
+
+      <button type="button" class="btn" onclick="calcularMAAS()">Evaluar Cuestionario</button>
+    </form>
+
+    <div id="result"></div>
+
+    <footer>
+      Basado en Brown & Ryan (2003) | Adaptación móvil optimizada
+    </footer>
+  </div>
+
+  <script>
+    function calcularMAAS() {
+      const form = document.getElementById("maasForm");
+      const resultDiv = document.getElementById("result");
+      const invertedIndices = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]; // Ítems (R)
+      let total = 0;
+      let allAnswered = true;
+
+      for (let i = 1; i <= 15; i++) {
+        const value = form[`q${i}`].value;
+        if (!value) {
+          allAnswered = false;
+          break;
+        }
+        let score = parseInt(value);
+        if (invertedIndices.includes(i)) {
+          score = 7 - score; // Invertir: 1→6, 2→5, ..., 6→1
+        }
+        total += score;
+      }
+
+      if (!allAnswered) {
+        alert("Por favor, responde todas las preguntas.");
+        return;
+      }
+
+      let interpretation = "";
+      if (total < 40) {
+        interpretation = "Baja atención plena. Tendencia a distracción y acción automática.";
+      } else if (total <= 70) {
+        interpretation = "Nivel moderado. Algunos momentos de conciencia, pero con distracciones.";
+      } else {
+        interpretation = "Alta atención plena. Buena presencia y autorregulación en el momento.";
+      }
+
+      resultDiv.style.display = "block";
+      resultDiv.innerHTML = `
+        <h3>Tu resultado MAAS</h3>
+        <p><strong>Puntuación: ${total}/90</strong></p>
+        <p>${interpretation}</p>
+        <p style="font-size:0.9em; margin-top:10px;">
+          🔹 >70: Alta mindfulness<br>
+          🔹 40–70: Nivel medio<br>
+          🔹 <40: Baja presencia
+        </p>
+      `;
+    }
+  </script>
+</body>
+</html>
