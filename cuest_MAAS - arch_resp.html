@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>MAAS Extendido - Mindfulness (24 ítems)</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f9;
+      color: #2c3e50;
+      line-height: 1.6;
+      -webkit-text-size-adjust: none;
+    }
+
+    .container {
+      max-width: 100%;
+      padding: 15px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 1.4em;
+      text-align: center;
+      margin: 15px 0;
+      color: #2980b9;
+    }
+
+    .subtitle {
+      font-size: 0.9em;
+      text-align: center;
+      color: #7f8c8d;
+      margin-bottom: 15px;
+    }
+
+    .instructions {
+      background-color: #eef2f7;
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 0.95em;
+      margin-bottom: 15px;
+    }
+
+    .scale {
+      font-size: 0.9em;
+      background-color: #dfe6e9;
+      padding: 10px;
+      border-radius: 8px;
+      text-align: center;
+      margin: 10px 0;
+      color: #34495e;
+    }
+
+    .item {
+      background: white;
+      padding: 14px;
+      margin-bottom: 12px;
+      border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    .item label {
+      font-weight: 600;
+      font-size: 0.95em;
+      margin-bottom: 8px;
+      display: block;
+      color: #2c3e50;
+    }
+
+    .item em {
+      color: #e74c3c;
+      font-style: normal;
+      font-weight: bold;
+    }
+
+    .item select, .item input {
+      width: 100%;
+      padding: 12px;
+      font-size: 1em;
+      border: 1px solid #bdc3c7;
+      border-radius: 8px;
+      background-color: #fdfdfd;
+      appearance: none;
+      -webkit-appearance: none;
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      background-size: 12px;
+    }
+
+    .item select {
+      background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23131313%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.4-12.8z%22%2F%3E%3C%2Fsvg%3E");
+    }
+
+    .progress-container {
+      width: 100%;
+      background-color: #ecf0f1;
+      border-radius: 5px;
+      margin: 15px 0;
+    }
+
+    .progress-bar {
+      height: 10px;
+      background-color: #3498db;
+      border-radius: 5px;
+      width: 0%;
+      transition: width 0.3s;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 16px;
+      margin: 20px 0;
+      background-color: #2980b9;
+      color: white;
+      font-size: 1.1em;
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #2471a3;
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+    }
+
+    .btn-email {
+      background-color: #27ae60;
+      margin-top: 10px;
+    }
+
+    .btn-email:hover {
+      background-color: #219955;
+    }
+
+    #result {
+      margin-top: 20px;
+      padding: 18px;
+      background-color: #d6eaf8;
+      border-radius: 10px;
+      font-size: 1em;
+      text-align: center;
+      display: none;
+      color: #2c3e50;
+    }
+
+    #result h3 {
+      margin-bottom: 8px;
+      color: #2980b9;
+    }
+
+    #detailedResults {
+      margin-top: 20px;
+      display: none;
+    }
+
+    .result-item {
+      background: white;
+      padding: 12px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .result-item-title {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .result-item-score {
+      color: #2980b9;
+      font-weight: bold;
+    }
+
+    .result-item-inverted {
+      color: #e74c3c;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.8em;
+      color: #95a5a6;
+      margin-top: 20px;
+    }
+
+    .toggle-results {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      margin-top: 10px;
+      cursor: pointer;
+      font-size: 0.9em;
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        max-width: 700px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Escala MAAS - Versión Extendida</h1>
+    <p class="subtitle">Mindful Attention Awareness Scale (24 ítems)</p>
+
+    <div class="instructions">
+      <p>Por favor, completa los siguientes datos para comenzar el cuestionario.</p>
+    </div>
+
+    <form id="personalDataForm">
+        <div class="item">
+            <label for="nombre">Nombre completo:</label>
+            <input type="text" id="nombre" name="nombre" required>
+        </div>
+        <div class="item">
+            <label for="id">ID del participante:</label>
+            <input type="text" id="id" name="id" required>
+        </div>
+        <div class="item">
+            <label for="ciudad">Ciudad:</label>
+            <input type="text" id="ciudad" name="ciudad" required>
+        </div>
+        <div class="item">
+            <label for="nivel_estudios">Nivel de estudios:</label>
+            <input type="text" id="nivel_estudios" name="nivel_estudios" required>
+        </div>
+        <div class="item">
+            <label for="universidad">Universidad:</label>
+            <input type="text" id="universidad" name="universidad" required>
+        </div>
+    </form>
+
+    <div class="instructions">
+      <p>Lee cada afirmación y selecciona con qué frecuencia te ocurre en tu vida diaria. Usa la escala del 1 al 6. Responde con sinceridad.</p>
+      <p><strong>Nota:</strong> Los ítems marcados con <em>(R)</em> se puntúan de forma invertida.</p>
+    </div>
+
+    <div class="scale">
+      <strong>1</strong> Casi siempre &nbsp;|&nbsp;
+      <strong>2</strong> Muy frecuentemente &nbsp;|&nbsp;
+      <strong>3</strong> Algo frecuentemente<br>
+      <strong>4</strong> Algo infrecuentemente &nbsp;|&nbsp;
+      <strong>5</strong> Muy infrecuentemente &nbsp;|&nbsp;
+      <strong>6</strong> Casi nunca
+    </div>
+
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <form id="maasForm">
+      <div class="item">
+        <label>1. Podría estar experimentando una emoción y no ser consciente de ello hasta mucho después. <em>(R)</em></label>
+        <select id="q1" required onchange="updateProgress()"><option value="">Selecciona...</option>
+          <option value="1">1 - Casi siempre</option><option value="2">2 - Muy frecuentemente</option>
+          <option value="3">3 - Algo frecuentemente</option><option value="4">4 - Algo infrecuentemente</option>
+          <option value="5">5 - Muy infrecuentemente</option><option value="6">6 - Casi nunca</option>
+        </select>
+      </div>
+
+      <div class="item">
+        <label>2. Rompo o derramo cosas por no prestar atención, por actuar rápido o pensar en otra cosa. <em>(R)</em></label>
+        <select id="q2" required onchange="updateProgress()"><option value="">Selecciona...</option>
+          <option value="1">1 - Casi siempre</option><option value="2">2 - Muy frecuentemente</option>
+          <option value="3">3 - Algo frecuentemente</option><option value="4">4 - Algo infrecuentemente</option>
+          <option value="5">5 - Muy infrecuentemente</option><option value="6">6 - Casi nunca</option>
+        </select>
+      </div>
+
+      <div class="item">
+        <label>3. Me resulta difícil mantener la concentración en lo que sucede en el presente. <em>(R)</em></label>
+        <select id="q3" required onchange="updateProgress()"><option value="">Selecciona...</option>
+          <option value="1">1 - Casi siempre</option><option value="2">2 - Muy frecuentemente</option>
+          <option value="3">3 - Algo frecuentemente</option><option value="4">4 - Algo infrecuentemente</option>
+          <option value="5">5 - Muy infrecuentemente</option><option value="6">6 - Casi nunca</option>
+        </select>
+      </div>
+
+      <div class="item">
+        <label>4. Tiendo a caminar rápido hacia un destino sin prestar atención a lo que sucede en el camino. <em>(R)</em></label>
+        <select id="q4" required onchange="updateProgress()"><option value="">Selecciona...</option>
+          <option value="1">1 - Casi siempre</option><option value="2">2 - Muy frecuentemente</option>
+          <option value="3">3 - Algo frecuentemente</option><option value="4">4 - Algo infrecuentemente</option>
+          <option value="5">5 - Muy infrecuentemente</option><option value="6">6 - Casi nunca</option>
+        </select>
+      </div>
+
+      <div class="item">
+        <label>5. No noto sensaciones físicas de tensión o malestar hasta que se vuelven evidentes. <em>(R)</em></label>
+        <select id="q5" required onchange="updateProgress()"><option value="">Selecciona...</option>
+          <option value="1">1 - Casi siempre</option><option value="2">2 - Muy frecuentemente</option>
+          <option value="3">3 - Algo frecuentemente</option><option value="4">4 - Algo infrecuentemente</option>
+          <option value="5">5 - Muy infrecuentemente</option><option value="6">6 - Casi nunca</option>
+        </select>
+      </div>
+
+      <div class="item">
+        <label>6. Olvido rápidamente el nombre de personas que acabo de conocer. <em>(R)</em></label>
+        <select id="q6" required onchange="updateProgress()"><option value="">Selecciona...</option>
+          <option value="1">1 - Casi siempre</option><option value="2">2 - Muy frecuentemente</option>
+          <option value="3">3 - Algo frecuentemente</option><option value="4">4 - Algo infrecuentemente</option>
+          <option value="5">5 - Muy infrecuentemente</option><option value="6">6 - Casi nunca</option>
+        </select>
+      </div>
+
+      <div class="item">
+        <label>7. Actúo automáticamente, sin darme cuenta de lo que estoy haciendo. <em>(R)</em></label>
+        <select id="q7" required onchange="updateProgress()"><option value="">Selecciona...</option>
+          <option value="1">1 - Casi siempre</option><option value="2">2 - Muy frecuentemente</option>
+          <option value="3">3 - Algo frecuentemente</option><option value="4">4 - Algo infrecuentemente</option>
+          <option value="5">5 - Muy infrecuentemente</option><option value="6">6 - Casi nunca</option>
+        </select>
+      </div>
+
+      <div class="item">
+        <label>8. Me centro tanto en metas futuras que pierdo de vista lo que hago ahora. <em>(R)</em></label>
+        <select id="q8" required onchange="updateProgress()"><option value="">Selecciona...</option>
+          <option value="1">1 - Casi siempre</option><option value="2">2 - Muy frecuentemente</option>
+          <option value="3">3 - Algo frecuentemente</option><option value="4">4 - Algo infrecuentemente</option>
+          <option value="5">5 - Muy infrecuentemente</option><option value="6">6 - Casi nunca</option>
+        </select>
+      </div>
+
+      <div class="item">
+        <label>9. Hago mis tareas o trabajos de forma mecánica, sin atención plena. <em>(R)</em></label>
+        <select id="q9" required onchange="updateProgress()"><option value="">Selecciona...</option>
+          <option value="1">1 - Casi siempre</option><option value="2">2 - Muy frecuentemente</option>
+          <option value="3">3 - Algo frecuentemente</option><option value="4">4 - Algo infrecuentemente</option>
+          <option value="5">5 - Muy infrecuentemente</option><option value="6">6 - Casi nunca</option>
+        </select>
+      </div>
+
+      <div class="item">
+        <label>10. Me sorprendo escuchando a medias mientras otros hablan. <em>(R)</em></label>
+        <select id="q10" required onchange="updateProgress()"><option value="">Selecciona...</option>
+          <option value="1">1 - Casi siempre</option><option value="2">2 - Muy frecuentemente</option>
+          <option value="3">3 - Algo frecuentemente</option><option value="4">4 - Algo infrecuentemente</option>
+          <option value="5">5 - Muy infrecuentemente</option><option value="6">6 - Casi nunca</option>
+        </select>
+      </div>
+
+      <div class="item">
+        <label>11. Como sin ser consciente del sabor, la textura o el aroma de la comida. <em>(R)</em></label>
+        <select id="q11" required onchange="updateProgress()"><option value="">Selecciona...</option>
+          <option value="1">1 - Casi siempre</option><option value="2">2 - Muy frecuentemente</option>
+          <option value="3">3 - Algo frecuentemente</option><option value="4">4 - Algo infrecuentemente</option>
+          <option value="5">5 - Muy infrecuentemente</option><option value="6">6 - Casi nunca</option>
+        </select>
+      </div>
+
+      <div class="item">
+        <label>12. Apresuro actividades sin estar realmente presente en ellas. <em>(R)</em></label>
+        <select id="q12" required onchange="updateProgress()"><option value="">Selecciona...</option>
+          <option value="1">1 - Casi siempre</option><option value="2">2 - Muy frecuentemente</option>
+          <option value="3">3 - Algo frecuentemente</option><option value="4">4 - Algo infrecuentemente</option>
+          <option value="5">5 - Muy infrecuentemente</option><option value="6">6 - Casi nunca</option>
+        </select>
+      </div>
+
+      <div class="item">
+        <label>13. Me enfado o molesto sin darme cuenta hasta después. <em>(R)</em></label>
+        <select id="q13" required onchange="updateProgress()"><option value="">Selecciona...</option>
+          <option value="1">1 - Casi siempre</option><option value="2">2 - Muy frecuentemente</option>
+          <option value="3">3 - Algo frecuentemente</option><option value="4">4 - Algo infrecuentemente</option>
+          <option value="5">5 - Muy infrecuentemente</option><option value="6">6 - Casi nunca</option>
+        </select>
+      </div>
+
+      <div class="item">
+        <label>14. Me doy cuenta de cómo mis emociones afectan mis pensamientos y acciones.</label>
+        <select id="q14" required onchange="updateProgress()"><option value="">Selecciona...</option>
+          <option value="1">1 - Casi siempre</option><option value="2">2 - Muy frecuentemente</option>
+          <option value="3">3 - Algo frecuentemente</option><option value="4">4 - Algo infrecuentemente</option>
+          <option value="5">5 - Muy infrecuentemente</option><option value="6">6 - Casi nunca</option>
+        </select>
+      </div>
+
+      <div class="item">
+        <label>15. Presto atención plena a experiencias cotidianas (ej. respirar, caminar, ducharme).</label>
+        <select id="q15" required onchange="updateProgress()"><option value="">Selecciona...</option>
+          <option value="1">1 - Casi siempre</option><option value="2">2 - Muy frecuentemente</option>
+          <option value="3">3 - Algo frecuentemente</option><option value="4">4 - Algo infrecuentemente</option>
+          <option value="5">5 - Muy infrecuentemente</option><option value="6">6 - Casi nunca</option>
+        </select>
+      </div>
+
+      <div class="item">
+        <label>16. Me pierdo en mis pensamientos y pierdo contacto con el presente. <em>(R)</em></label>
+        <select id="q16" required onchange="updateProgress()"><option value="">Selecciona...</option>
+          <option value="1">1 - Casi siempre</option><option value="2">2 - Muy frecuentemente</option>
+          <option value="3">3 - Algo frecuentemente</option><option value="4">4 - Algo infrecuentemente</option>
+          <option value="5">5 - Muy infrecuentemente</option><option value="6">6 - Casi nunca</option>
+        </select>
+      </div>
+
+      <div class="item">
+        <label>17. No noto cambios en mi estado de ánimo hasta que alguien me lo hace ver. <em>(R)</em></label>
+        <select id="q17" required onchange="updateProgress()"><option value="">Selecciona...</option>
+          <option value="1">1 - Casi siempre</option><option value="2">2 - Muy frecuentemente</option>
+          <option value="3">3 - Algo frecuentemente</option><option value="4">4 - Algo infrecuentemente</option>
+          <option value="5">5 - Muy infrecuentemente</option><option value="6">6 - Casi nunca</option>
+        </select>
+      </div>
+
+      <div class="item">
+        <label>18. Hago varias cosas a la vez sin centrarme en ninguna. <em>(R)</em></label>
+        <select id="q18" required onchange="updateProgress()"><option value="">Selecciona...</option>
+          <option value="1">1 - Casi siempre</option><option value="2">2 - Muy frecuentemente</option>
+          <option value="3">3 - Algo frecuentemente</option><option value="4">4 - Algo infrecuentemente</option>
+          <option value="5">5 - Muy infrecuentemente</option><option value="6">6 - Casi nunca</option>
+        </select>
+      </div>
+
+      <div class="item">
+        <label>19. Me sorprendo repasando mentalmente eventos pasados. <em>(R)</em></label>
+        <select id="q19" required onchange="updateProgress()"><option value="">Selecciona...</option>
+          <option value="1">1 - Casi siempre</option><option value="2">2 - Muy frecuentemente</option>
+          <option value="3">3 - Algo frecuentemente</option><option value="4">4 - Algo infrecuentemente</option>
+          <option value="5">5 - Muy infrecuentemente</option><option value="6">6 - Casi nunca</option>
+        </select>
+      </div>
+
+      <div class="item">
+        <label>20. Disfruto conscientemente de los pequeños placeres (ej. un café).</label>
+        <select id="q20" required onchange="updateProgress()"><option value="">Selecciona...</option>
+          <option value="1">1 - Casi siempre</option><option value="2">2 - Muy frecuentemente</option>
+          <option value="3">3 - Algo frecuentemente</option><option value="4">4 - Algo infrecuentemente</option>
+          <option value="5">5 - Muy infrecuentemente</option><option value="6">6 - Casi nunca</option>
+        </select>
+      </div>
+
+      <div class="item">
+        <label>21. Me doy cuenta de los sonidos ambientales (ej. pájaros, lluvia).</label>
+        <select id="q21" required onchange="updateProgress()"><option value="">Selecciona...</option>
+          <option value="1">1 - Casi siempre</option><option value="2">2 - Muy frecuentemente</option>
+          <option value="3">3 - Algo frecuentemente</option><option value="4">4 - Algo infrecuentemente</option>
+          <option value="5">5 - Muy infrecuentemente</option><option value="6">6 - Casi nunca</option>
+        </select>
+      </div>
+
+      <div class="item">
+        <label>22. Reacciono emocionalmente antes de pensar. <em>(R)</em></label>
+        <select id="q22" required onchange="updateProgress()"><option value="">Selecciona...</option>
+          <option value="1">1 - Casi siempre</option><option value="2">2 - Muy frecuentemente</option>
+          <option value="3">3 - Algo frecuentemente</option><option value="4">4 - Algo infrecuentemente</option>
+          <option value="5">5 - Muy infrecuentemente</option><option value="6">6 - Casi nunca</option>
+        </select>
+      </div>
+
+      <div class="item">
+        <label>23. Observo mis pensamientos sin juzgarlos.</label>
+        <select id="q23" required onchange="updateProgress()"><option value="">Selecciona...</option>
+          <option value="1">1 - Casi siempre</option><option value="2">2 - Muy frecuentemente</option>
+          <option value="3">3 - Algo frecuentemente</option><option value="4">4 - Algo infrecuentemente</option>
+          <option value="5">5 - Muy infrecuentemente</option><option value="6">6 - Casi nunca</option>
+        </select>
+      </div>
+
+      <div class="item">
+        <label>24. Noto cuando mi cuerpo está cansado o tenso.</label>
+        <select id="q24" required onchange="updateProgress()"><option value="">Selecciona...</option>
+          <option value="1">1 - Casi siempre</option><option value="2">2 - Muy frecuentemente</option>
+          <option value="3">3 - Algo frecuentemente</option><option value="4">4 - Algo infrecuentemente</option>
+          <option value="5">5 - Muy infrecuentemente</option><option value="6">6 - Casi nunca</option>
+        </select>
+      </div>
+
+      <button type="button" class="btn" onclick="calcularMAAS()">Calcular Puntuación</button>
+    </form>
+
+    <div id="result"></div>
+
+    <div id="detailedResults"></div>
+
+    <footer>
+      Basado en Brown & Ryan (2003) | Versión extendida de 24 ítems | Adaptación para investigación
+    </footer>
+  </div>
+
+  <script>
+    // Ítems que deben invertirse (marcados con R)
+    const invertedItems = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 16, 17, 18, 19, 22];
+    
+    // Actualizar barra de progreso
+    function updateProgress() {
+      let answered = 0;
+      for (let i = 1; i <= 24; i++) {
+        if (document.getElementById(`q${i}`).value !== "") {
+          answered++;
+        }
+      }
+      const progress = (answered / 24) * 100;
+      document.getElementById("progressBar").style.width = `${progress}%`;
+    }
+    
+    // Calcular puntuación MAAS
+    function calcularMAAS() {
+      const personalDataForm = document.getElementById("personalDataForm");
+      const maasForm = document.getElementById("maasForm");
+      const resultDiv = document.getElementById("result");
+      const detailedResultsDiv = document.getElementById("detailedResults");
+      let total = 0;
+      let allPersonalDataAnswered = true;
+      let allMaasAnswered = true;
+      let fileContent = '';
+      
+      // Verificar que todos los datos personales estén completos
+      for (let i = 0; i < personalDataForm.elements.length; i++) {
+        if (personalDataForm.elements[i].value === "") {
+          allPersonalDataAnswered = false;
+          break;
+        }
+      }
+      
+      if (!allPersonalDataAnswered) {
+        alert("Por favor, completa todos tus datos personales antes de continuar.");
+        return;
+      }
+      
+      // Verificar que todas las preguntas del cuestionario estén respondidas
+      for (let i = 1; i <= 24; i++) {
+        if (maasForm[`q${i}`].value === "") {
+          allMaasAnswered = false;
+          break;
+        }
+      }
+      
+      if (!allMaasAnswered) {
+        alert("Por favor, responde todas las preguntas del cuestionario antes de calcular tu puntuación.");
+        return;
+      }
+
+      // Preparar el contenido del archivo con los datos personales
+      fileContent += 'Resultados del Cuestionario MAAS (24 ítems)\n\n';
+      fileContent += '--- Datos del Participante ---\n';
+      fileContent += `Nombre: ${personalDataForm.nombre.value}\n`;
+      fileContent += `ID: ${personalDataForm.id.value}\n`;
+      fileContent += `Ciudad: ${personalDataForm.ciudad.value}\n`;
+      fileContent += `Nivel de estudios: ${personalDataForm.nivel_estudios.value}\n`;
+      fileContent += `Universidad: ${personalDataForm.universidad.value}\n`;
+      fileContent += `Fecha: ${new Date().toLocaleString()}\n`;
+      fileContent += '----------------------------\n\n';
+      fileContent += '--- Respuestas por Ítem ---\n';
+      
+      let detailedHTML = '<h3>Resultados Detallados por Ítem</h3>';
+
+      // Calcular puntuación y generar resultados detallados
+      for (let i = 1; i <= 24; i++) {
+        const value = parseInt(maasForm[`q${i}`].value);
+        let score = value;
+        let isInverted = invertedItems.includes(i);
+        
+        if (isInverted) {
+          score = 7 - value; // Invertir puntuación para ítems (R)
+        }
+        
+        total += score;
+        
+        // Agregar detalles para cada ítem en HTML
+        detailedHTML += `
+          <div class="result-item">
+            <div class="result-item-title">Ítem ${i}: ${maasForm[`q${i}`].options[value].text}</div>
+            <div>Puntuación: <span class="result-item-score ${isInverted ? 'result-item-inverted' : ''}">${score}</span> 
+            ${isInverted ? '(ítem invertido)' : ''}</div>
+          </div>
+        `;
+
+        // Contenido para el archivo
+        fileContent += `Ítem ${i}: ${maasForm[`q${i}`].options[value].text}\n`;
+        fileContent += `Puntuación: ${score} ${isInverted ? '(ítem invertido)' : ''}\n\n`;
+      }
+      
+      // Interpretación de resultados
+      let interpretation = "";
+      let recommendation = "";
+      
+      if (total < 60) {
+        interpretation = "Baja atención plena. Tendencia a la distracción y acción automática.";
+        recommendation = "Considera practicar ejercicios de mindfulness como meditación o atención plena en actividades diarias para mejorar tu conciencia del momento presente.";
+      } else if (total <= 100) {
+        interpretation = "Nivel moderado de mindfulness. Tienes momentos de conciencia plena, pero también experimentas distracciones frecuentes.";
+        recommendation = "Puedes fortalecer tu práctica de atención plena mediante ejercicios regulares de concentración y observación sin juicio.";
+      } else {
+        interpretation = "Alta atención plena. Buena presencia en el momento y capacidad de autorregulación.";
+        recommendation = "Continúa con tu práctica de mindfulness y explora formas más avanzadas de mantener y profundizar tu conciencia plena.";
+      }
+
+      // Agregar información general al contenido del archivo
+      fileContent += `\n--- Resumen de Resultados ---\n`;
+      fileContent += `Puntuación Total: ${total}/144\n`;
+      fileContent += `Interpretación: ${interpretation}\n`;
+      fileContent += `Recomendación: ${recommendation}\n`;
+      fileContent += `----------------------------\n`;
+
+      // Mostrar resultados principales
+      resultDiv.style.display = "block";
+      resultDiv.innerHTML = `
+        <h3>Tu Resultado MAAS (24 ítems)</h3>
+        <p><strong>Puntuación Total: ${total}/144</strong></p>
+        <p>${interpretation}</p>
+        <p>${recommendation}</p>
+        <p style="margin-top: 15px;">
+          <strong>Rangos de interpretación:</strong><br>
+          🔹 <strong>>100 puntos:</strong> Alta atención plena<br>
+          🔹 <strong>60-100 puntos:</strong> Nivel moderado<br>
+          🔹 <strong><60 puntos:</strong> Baja presencia
+        </p>
+        <button class="toggle-results" onclick="toggleDetailedResults()">Ver detalles por ítem</button>
+        <button class="btn btn-email" onclick="descargarResultados()">Descargar resultados</button>
+      `;
+
+      // Mostrar resultados detallados
+      detailedResultsDiv.innerHTML = detailedHTML;
+
+      // Guardar contenido para el archivo en un atributo de datos
+      resultDiv.setAttribute('data-file-content', fileContent);
+    }
+    
+    // Alternar visibilidad de resultados detallados
+    function toggleDetailedResults() {
+      const detailedResults = document.getElementById("detailedResults");
+      const button = document.querySelector(".toggle-results");
+      
+      if (detailedResults.style.display === "none" || detailedResults.style.display === "") {
+        detailedResults.style.display = "block";
+        button.textContent = "Ocultar detalles por ítem";
+      } else {
+        detailedResults.style.display = "none";
+        button.textContent = "Ver detalles por ítem";
+      }
+    }
+
+    // Función para descargar resultados
+    function descargarResultados() {
+      const resultDiv = document.getElementById("result");
+      const fileContent = resultDiv.getAttribute('data-file-content');
+      
+      const blob = new Blob([fileContent], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'respuestas.txt';
+      document.body.appendChild(a);
+      a.click();
+      
+      setTimeout(() => {
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }, 100);
+    }
+  </script>
+</body>
+</html>
