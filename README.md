@@ -11,6 +11,7 @@ Explicación técnica del algoritmo de inteligencia artificial empleado
 
 -A.1 Contexto del análisis
 Como parte de la investigación doctoral se requiere modelar la variable y (rinst, índice de rendimiento institucional) a partir de tres predictores X (reprobadas, aprobadas, avance). El problema se enmarca en regresión supervisada con un tamaño muestral reducido (n = 24 registros completos) y tres covariables continuas, lo que sugiere la conveniencia de algoritmos capaces de capturar relaciones no lineales sin incurrir en un riesgo elevado de sobre-ajuste.
+
 -A.2 Selección del algoritmo
 Tras comparar OLS, Random Forest y redes neuronales someras mediante validación cruzada de 5 pliegues, se seleccionó un Gradient Boosting Regressor basado en XGBoost por las siguientes razones:
 Bias-variance trade-off favorable: combina la flexibilidad de árboles CART con la regularización propia del boosting.
