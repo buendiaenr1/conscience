@@ -9,14 +9,15 @@ Mindful Attention Awareness Scale
 Explicación técnica del algoritmo de inteligencia artificial empleado
 #### Ajuste de un Gradient Boosting Regressor a los datos de rendimiento académico
 
--A.1 Contexto del análisis
+A.1 Contexto del análisis
 Como parte de la investigación doctoral se requiere modelar la variable y (rinst, índice de rendimiento institucional) a partir de tres predictores X (reprobadas, aprobadas, avance). El problema se enmarca en regresión supervisada con un tamaño muestral reducido (n = 24 registros completos) y tres covariables continuas, lo que sugiere la conveniencia de algoritmos capaces de capturar relaciones no lineales sin incurrir en un riesgo elevado de sobre-ajuste.
 
--A.2 Selección del algoritmo
+A.2 Selección del algoritmo
 Tras comparar OLS, Random Forest y redes neuronales someras mediante validación cruzada de 5 pliegues, se seleccionó un Gradient Boosting Regressor basado en XGBoost por las siguientes razones:
 Bias-variance trade-off favorable: combina la flexibilidad de árboles CART con la regularización propia del boosting.
 Robustez ante outliers y heterocedasticidad: penaliza la varianza residual mediante la función de pérdida L2 con término de regularización ℓ₂.
 Interpretabilidad parcial: permite derivar importancias de características y efectos marginales (SHAP) sin perder precisión.
+
 A.3 Flujo de trabajo implementado en Python 3.12
 El código (ver Anexo B para listado completo) ejecuta los pasos siguientes:
 Lectura y limpieza
@@ -45,7 +46,9 @@ aprobadas 52 %
 avance 35 %
 reprobadas 13 %
 – El orden coincide con la intuición teórica: el número de materias aprobadas y el porcentaje de avance son los principales determinantes del índice institucional, mientras que las reprobadas ejercen un efecto marginal y negativo.
+
 A.4 Reproducibilidad
 El script es autocontenido: incluye la cadena de datos en bruto para garantizar que cualquier lector pueda replicar los resultados sin disponer del archivo externo. Las semillas (random_state=42) aseguran determinismo.
+
 A.5 Extensibilidad
 El mismo esquema puede incorporar regularización adicional (early stopping, Bayesian optimization) o extensiones no supervisadas (clustering de trayectorias) sin alterar la estructura básica propuesta.
