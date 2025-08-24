@@ -2,10 +2,10 @@
 instruments for assessing awareness
 
 *** Escala MAAS
-Mindful Attention Awareness Scale
+Mindful Attention Awareness Scale  _xb.py_
 #### cuest_MAAS - arch_resp.html  crea un archivo de respuestas para enviar por correo las respuestas
 
-*** IA
+*** IA aplicacion en python 
 Explicación técnica del algoritmo de inteligencia artificial empleado
 #### Ajuste de un Gradient Boosting Regressor a los datos de rendimiento académico
 
