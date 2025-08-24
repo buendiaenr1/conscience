@@ -9,9 +9,9 @@ Mindful Attention Awareness Scale
 Explicación técnica del algoritmo de inteligencia artificial empleado
 #### Ajuste de un Gradient Boosting Regressor a los datos de rendimiento académico
 
-A.1 Contexto del análisis
+-A.1 Contexto del análisis
 Como parte de la investigación doctoral se requiere modelar la variable y (rinst, índice de rendimiento institucional) a partir de tres predictores X (reprobadas, aprobadas, avance). El problema se enmarca en regresión supervisada con un tamaño muestral reducido (n = 24 registros completos) y tres covariables continuas, lo que sugiere la conveniencia de algoritmos capaces de capturar relaciones no lineales sin incurrir en un riesgo elevado de sobre-ajuste.
-A.2 Selección del algoritmo
+-A.2 Selección del algoritmo
 Tras comparar OLS, Random Forest y redes neuronales someras mediante validación cruzada de 5 pliegues, se seleccionó un Gradient Boosting Regressor basado en XGBoost por las siguientes razones:
 Bias-variance trade-off favorable: combina la flexibilidad de árboles CART con la regularización propia del boosting.
 Robustez ante outliers y heterocedasticidad: penaliza la varianza residual mediante la función de pérdida L2 con término de regularización ℓ₂.
