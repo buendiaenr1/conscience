@@ -56,7 +56,7 @@ Mindful Attention Awareness Scale
    
    10. **ajuste_cfa_maas.csv**   contiene
 
-        | Valor   | Etiqueta aprox.            | Interpretación                                             |
+| Valor   | Etiqueta aprox.            | Interpretación                                             |
 
 | ------- | -------------------------- | ---------------------------------------------------------- |
 
