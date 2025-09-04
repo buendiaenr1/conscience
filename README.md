@@ -223,4 +223,7 @@ Descartar item14 e item15 (no aportan; empeoran el ajuste).
 
 Con 13 ítems el modelo ganará parsimonia y fiabilidad. En CFA/SEM se valora con índices como PGFI, PNFI, AIC, BIC: valores más bajos indican mayor parsimonia.
 Eliminar ítems 14-15 aumenta la parsimonia porque reduce parámetros sin perder información útil.
+<img width="1214" height="175" alt="image" src="https://github.com/user-attachments/assets/726c2b5d-fb01-4c1b-83da-726efaf3fe1b" />
+
+
 
