@@ -226,4 +226,77 @@ Eliminar ítems 14-15 aumenta la parsimonia porque reduce parámetros sin perder
 <img width="1214" height="175" alt="image" src="https://github.com/user-attachments/assets/726c2b5d-fb01-4c1b-83da-726efaf3fe1b" />
 
 
+12. **Cuestionario MAAS Extendido – Atención Plena (24 ítems)**
+
+Instrucciones:
+
+Lee cada afirmación y selecciona con qué frecuencia te ocurre en tu vida diaria. Usa la escala del 1 al 6. Responde con sinceridad.
+
+Escala:
+
+1 = Casi siempre
+
+2 = Muy frecuentemente
+
+3 = Algo frecuentemente
+
+4 = Algo infrecuentemente
+
+5 = Muy infrecuentemente
+
+6 = Casi nunca
+
+(R) = ítem invertido
+
+1. Podría estar experimentando una emoción y no ser consciente de ello hasta mucho después. (R)
+
+2. Rompo o derramo cosas por no prestar atención, por actuar rápido o pensar en otra cosa. (R)
+
+3. Me resulta difícil mantener la concentración en lo que sucede en el presente. (R)
+
+4. Tiendo a caminar rápido hacia un destino sin prestar atención a lo que sucede en el camino. (R)
+
+5. No noto sensaciones físicas de tensión o malestar hasta que se vuelven evidentes. (R)
+
+6. Olvido rápidamente el nombre de personas que acabo de conocer. (R)
+
+7. Actúo automáticamente, sin darme cuenta de lo que estoy haciendo. (R)
+
+8. Me centro tanto en metas futuras que pierdo de vista lo que hago ahora. (R)
+
+9. Hago mis tareas o trabajos de forma mecánica, sin atención plena. (R)
+
+10. Me sorprendo escuchando a medias mientras otros hablan. (R)
+
+11. Como sin ser consciente del sabor, la textura o el aroma de la comida. (R)
+
+12. Apresuro actividades sin estar realmente presente en ellas. (R)
+
+13. Me enfado o molesto sin darme cuenta hasta después. (R)
+
+14. Me doy cuenta de cómo mis emociones afectan mis pensamientos y acciones.
+
+15. Presto atención plena a experiencias cotidianas (ej. respirar, caminar, ducharme).
+
+16. Me pierdo en mis pensamientos y pierdo contacto con el presente. (R)
+
+17. No noto cambios en mi estado de ánimo hasta que alguien me lo hace ver. (R)
+
+18. Hago varias cosas a la vez sin centrarme en ninguna. (R)
+
+19. Me sorprendo repasando mentalmente eventos pasados. (R)
+
+20. Disfruto conscientemente de los pequeños placeres (ej. un café).
+
+21. Me doy cuenta de los sonidos ambientales (ej. pájaros, lluvia).
+
+22. Reacciono emocionalmente antes de pensar. (R)
+
+23. Observo mis pensamientos sin juzgarlos.
+
+24. Noto cuando mi cuerpo está cansado o tenso.
+
+#### Nota: Los ítems con (R) se puntúan en sentido inverso:
+
+#### Puntuación invertida = 7 – valor seleccionado
 
