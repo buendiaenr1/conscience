@@ -176,7 +176,7 @@ Global: el modelo de 15 ítems no alcanza los estándares de ajuste habituales (
 
 11. **cargas_factoriales_maas.csv**
 
-    | Columna             | Descripción breve                                                        |
+| Columna             | Descripción breve                                                        |
 | ------------------- | ------------------------------------------------------------------------ |
 | lhs                 | Variable latente (factor)                                                |
 | op                  | Tipo de relación: `=~` carga factorial, `~~` varianza/error              |
