@@ -57,11 +57,8 @@ Mindful Attention Awareness Scale
    10. **ajuste_cfa_maas.csv**   contiene
 
 | Valor   | Etiqueta aprox.            | Interpretación                                             |
-
 | ------- | -------------------------- | ---------------------------------------------------------- |
-
 | 30      | npar                       | Número de parámetros estimados                             |
-
 | 2.5579  | chisq/df                   | χ² / gl ≈ 1.54 (razón de χ²)                               |
 
 | 138.13  | chisq                      | Estadístico χ² (modelo vs datos)                           |
