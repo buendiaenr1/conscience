@@ -161,7 +161,7 @@ Mindful Attention Awareness Scale
 | 7.338   | ecvi                       | Expected Cross-Validation Index                            |
 
 
-Resumen rápido
+**Resumen rápido**
 
 CFI/TLI ≈ 0.74/0.71 (por debajo del corte ≥ 0.90).
 
@@ -171,7 +171,7 @@ SRMR ≈ 0.12 > 0.08 ⇒ residuos altos.
 
 χ² significativo (p < .001) rechaza igualdad perfecta.
 
-Global: el modelo de 15 ítems no alcanza los estándares de ajuste habituales (Q1) con n = 27; se recomienda aumentar la muestra y revisar/reducir ítems.
+**Global**: el modelo de 15 ítems no alcanza los estándares de ajuste habituales (Q1) con n = 27; se recomienda aumentar la muestra y revisar/reducir ítems.
 
 
 11. **cargas_factoriales_maas.csv**
@@ -187,7 +187,7 @@ Global: el modelo de 15 ítems no alcanza los estándares de ajuste habituales (
 | pvalue              | Probabilidad asociada a z                                                |
 | ci.lower / ci.upper | Intervalo de confianza 95 %                                              |
 
-Cargas factoriales (=~)
+**Cargas factoriales (=~)**
 
 | Ítem       | λ (est.std) | p        | Interpretación                 |
 | ---------- | ----------- | -------- | ------------------------------ |
@@ -221,5 +221,6 @@ Conservar ítems 1-13 (todas las cargas λ ≥ 0.43 y significativas).
 
 Descartar item14 e item15 (no aportan; empeoran el ajuste).
 
-Con 13 ítems el modelo ganará parsimonia y fiabilidad.
+Con 13 ítems el modelo ganará parsimonia y fiabilidad. En CFA/SEM se valora con índices como PGFI, PNFI, AIC, BIC: valores más bajos indican mayor parsimonia.
+Eliminar ítems 14-15 aumenta la parsimonia porque reduce parámetros sin perder información útil.
 
