@@ -1,4 +1,8 @@
 install.packages(c("xgboost", "caret", "readr"), quiet = TRUE)
+install.packages(c("lavaan", "tidyverse", "caret"), quiet = TRUE)
+library(tidyverse)
+library(lavaan)
+library(caret)
 library(xgboost)
 library(caret)
 library(lavaan)
